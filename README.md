@@ -57,7 +57,29 @@ open coverage/index.html
 
 to the terminal and hit enter. New browser tab will be open.
 
+Important note: Please do not delete lib/data/images_list.txt. If you are not going to use it, just empty file content.
+
 ## Instructions
+
+Image fetcher is a ruby script which can download images from world wide web by providing a plain text file to it or by just updating existing images_list.txt just below lib/data folder.
+
+If you want to use default images_list.txt update file and run
+
+```shell
+ruby execute.rb
+```
+
+If you want to use another file from your local run
+
+```shell
+ruby execute.rb 'path/to/your/file/that/contains/images.txt'
+```
+
+If you provide more than one argument script will give you ArgumentError
+Also if you give wrong or nonexisting path system will give you 'No such file or directory @ rb_sysopen'
+In that case please take a look at your file path and make sure it is correctly given.
+
+---------
 
 Image fetcher
 

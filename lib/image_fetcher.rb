@@ -23,9 +23,7 @@ class ImageFetcher
   private
 
   def read_image_file(file_path)
-    unless file_path.nil?
-      raise ArgumentError if check_file_type(file_path) != 'txt'
-    end
+    raise ArgumentError if !file_path.nil? && (check_file_type(file_path) != 'txt')
 
     file = if file_path.nil?
              File.open('lib/data/images_list.txt')
@@ -46,7 +44,7 @@ class ImageFetcher
   def file_path_error(file_path, result_message)
     error_message = "Couldn't read file located at '#{file_path}' "
     error_message += "Catched error is -> #{result_message} "
-    error_message + 'Please make sure file exists and file_path is correct'
+    "#{error_message}Please make sure file exists and file_path is correct"
   end
 
   def file_type_error(file_type)
@@ -70,7 +68,7 @@ class ImageFetcher
   end
 
   def download_image(url, index, random_download_path)
-    URI.open(url) do |image|
+    URI.parse(url).open do |image|
       if content_image?(image.content_type)
         File.open("downloads/#{random_download_path}/image_#{index}.jpg", 'wb') do |file|
           file.write(image.read)
@@ -87,12 +85,8 @@ class ImageFetcher
   end
 
   def content_image?(content_type)
-    if content_type.split('/')[0] == 'image' ||
-       WHITELIST_IMAGE_EXTENSIONS.include?(content_type.split('/')[1])
-      true
-    else
-      false
-    end
+    content_type.split('/')[0] == 'image' ||
+      WHITELIST_IMAGE_EXTENSIONS.include?(content_type.split('/')[1])
   end
 
   def generate_random_download_path

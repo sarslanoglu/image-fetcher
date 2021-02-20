@@ -3,6 +3,8 @@ AllCops:
     - 'Gemfile'
     - 'Rakefile'
     - 'spec/spec_helper.rb'
+  NewCops: enable
+  SuggestExtensions: false
 Layout/LineLength:
   Max: 100
 Layout/SpaceAroundMethodCallOperator:
@@ -12,7 +14,7 @@ Lint/RaiseException:
 Lint/StructNewOverride:
   Enabled: true
 Metrics/BlockLength:
-  ExcludedMethods: ['describe']
+  IgnoredMethods: ['describe']
 Metrics/MethodLength:
   Max: 15
 Style/Documentation:

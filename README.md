@@ -13,12 +13,12 @@ cd image-fetcher
 ruby -v
 ```
 
-The ouput should start with something like `ruby 2.7.2`
+The ouput should be `ruby 3.0.0`
 
 If not, you can install the right ruby version using [rvm](https://github.com/rvm/rvm) (it could take a while) or use your own ruby version manager:
 
 ```shell
-rvm install 2.7.2
+rvm install 3.0.0
 ```
 
 ### Install dependencies
